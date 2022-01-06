@@ -22,15 +22,12 @@ void sort(const char* arr[], int n)
 
 int main(int argc, char* argv[])
 {
-	//int n = sizeof(**argv) / sizeof(*argv[0]);
-
-	//int order[500];
+	// find any elements that match -h or -l
 	bool showHigh = false;
 	bool showLow = false;
+	char** elemUsed = malloc(argc * sizeof(char*));
+	int elemUsedCnt = 0;
 	if (argc > 1) {
-		//int high = 5000;
-		//int low = 5000;
-
 		for (int i = 1; i < argc; i++) {
 			if (strcmp(argv[i], "-h") == 0)
 			{
@@ -40,44 +37,53 @@ int main(int argc, char* argv[])
 			{
 				showLow = true;
 			}
+			else{
+				elemUsed[elemUsedCnt] = malloc(sizeof(argv[i]));
+				strcpy(elemUsed[elemUsedCnt], argv[i]);
+				elemUsedCnt++;
+			}
 		}
 	}
-	sort((const char**)argv, argc);
+
+	// sort list in alphabetical order
+	sort((const char**)elemUsed, elemUsedCnt);
+
+	// if no arguments
 	if (!showHigh && !showLow) {
-		for (int i = 0; i < argc; i++) {
-			if (!strcmp(argv[i], "-h") == 0 || !strcmp(argv[i], "-l") == 0)
-				printf("%s \n", argv[i]);
+		for (int i = 0; i < elemUsedCnt; i++) {
+				printf("%s \n", elemUsed[i]);
 		}
 	}
 	if (showHigh && !showLow) {
-		printf("HIGH: %s \n", argv[argc-1]);
+		printf("HIGH: %s \n", elemUsed[elemUsedCnt-1]);
 	}
 	if (showLow && !showHigh) {
-		int i = 0;
-		bool isWord = false;
-		while (!isWord) {
-			if (strcmp(argv[i], "-h") == 0) i++;
-			else if (strcmp(argv[i], "-l") == 0) i++;
+		// int i = 0;
+		// bool isWord = false;
+		// while (!isWord) {
+		// 	if (strcmp(argv[i], "-h") == 0) i++;
+		// 	else if (strcmp(argv[i], "-l") == 0) i++;
 		
-			else {
-				isWord = true;
-			}
-		}
-		printf("LOW: %s \n", argv[i+1]);
+		// 	else {
+		// 		isWord = true;
+		// 	}
+		// }
+		// printf("LOW: %s \n", argv[i+1]);
+		printf("LOW: %s \n", elemUsed[0]);
 	}
 	if (showHigh && showLow) {
-		int i = 0;
-		bool isWord = false;
-		while (!isWord) {
-			if (strcmp(argv[i], "-h") == 0) i++;
-			else if (strcmp(argv[i], "-l") == 0) i++;
+		// int i = 0;
+		// bool isWord = false;
+		// while (!isWord) {
+		// 	if (strcmp(argv[i], "-h") == 0) i++;
+		// 	else if (strcmp(argv[i], "-l") == 0) i++;
 		
-			else {
-				isWord = true;
-			}
-		}
-		printf("LOW: %s \n", argv[i+1]);
-		printf("HIGH: %s", argv[argc-1]);
+		// 	else {
+		// 		isWord = true;
+		// 	}
+		// }
+		printf("LOW: %s \n", elemUsed[0]);
+		printf("HIGH: %s \n", elemUsed[elemUsedCnt-1]);
 	}
 
 	return (0);
