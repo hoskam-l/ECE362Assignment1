@@ -5,7 +5,6 @@
 
 
 
-
 //from https://www.geeksforgeeks.org/c-program-sort-array-names-strings/
 // Defining comparator function as per the requirement
 static int myCompare(const void* a, const void* b)
@@ -31,8 +30,9 @@ int main(int argc, char* argv[])
 	bool showLow = false;
 	char** elemUsed = malloc(argc * sizeof(char*));
 	int elemUsedCnt = 0;
+	int i;
 	if (argc > 0) {
-		for (int i = 1; i < argc; i++) {
+		for (i = 1; i < argc; i++) {
 			if (strcmp(argv[i], "-h") == 0)
 			{
 				showHigh = true;
@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 	}
 	// if no arguments
 	if (!showHigh && !showLow) {
-		for (int i = 0; i < elemUsedCnt; i++) {
+		for (i = 0; i < elemUsedCnt; i++) {
 			printf("%s \n", elemUsed[i]);
 		}
 	}
