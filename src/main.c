@@ -20,28 +20,29 @@ void sort(const char *arr[], int n)
 	qsort(arr, n, sizeof(const char *), myCompare);
 }
 
+// function to print Error message.
 void printError()
 {
 	printf("ERROR: invalid arguments \n");
-					printf("Usage: filter [-l] [-h] string string ...\n");
-					printf("\n \n");
-					
+	printf("Usage: filter [-l] [-h] string string ...\n");
+	printf("\n \n");
 }
 
 int main(int argc, char *argv[])
 {
 	// find any elements that match -h or -l
+	// create an error message if a modifier is not correct
 	// and make new array of strings with only elements
-	bool showHigh = false;
-	bool showLow = false;
-	char **elemUsed = malloc(argc * sizeof(char *));
+	bool showHigh = false;							 // If display high value this is high
+	bool showLow = false;							 // If display low value this is high
+	char **elemUsed = malloc(argc * sizeof(char *)); // chreate an array only for actual elements
 	int elemUsedCnt = 0;
 	int i;
 	if (argc > 0)
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if (*(argv[i] + 0) == '-')
+			if (*(argv[i] + 0) == '-') // (*(argv[i]+0)) refrences the first character of each element
 			{
 
 				if (strcmp(argv[i], "-h") == 0)
@@ -58,9 +59,10 @@ int main(int argc, char *argv[])
 					return 0;
 				}
 			}
+			// copy non modifiers to element array
 			else
 			{
-				elemUsed[elemUsedCnt] = malloc(sizeof(argv[i]));
+				elemUsed[elemUsedCnt] = malloc(sizeof(argv[i])); 
 				strcpy(elemUsed[elemUsedCnt], argv[i]);
 				elemUsedCnt++;
 			}
@@ -76,7 +78,7 @@ int main(int argc, char *argv[])
 		printError();
 		return 0;
 	}
-	// if no arguments
+	// if no arguments print in alphabet order
 	if (!showHigh && !showLow)
 	{
 		for (i = 0; i < elemUsedCnt; i++)
@@ -102,5 +104,7 @@ int main(int argc, char *argv[])
 	}
 
 	printf("\n \n");
+
+
 	return 0;
 }
