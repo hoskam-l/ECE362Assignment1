@@ -33,6 +33,9 @@ int main(int argc, char* argv[])
 	int i;
 	if (argc > 0) {
 		for (i = 1; i < argc; i++) {
+			if(*(argv[i]+0) =='-'){
+				printf("saw a dash in position: %d\n", i);
+			}
 			if (strcmp(argv[i], "-h") == 0)
 			{
 				showHigh = true;
