@@ -1,8 +1,18 @@
 hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ make all
 rm -f *.o *.exe
 clear
-cc    -c -o main.o main.c
-gcc -std=c99 -Wall -pedantic main.o -o main.exe
+gcc -c main.c
+gcc -std=c99 -Wall -pedantic main.o -o main
+make help
+make[1]: Entering directory `/home/hoskam/common/Documents/winter2022/ECE362/ECE362Assignment1/src'
+
+
+To find the highest value add -h to the list of values
+To find the lowest value add -l to the list of values
+To sort the list don't add any modifiers to the list
+
+
+make[1]: Leaving directory `/home/hoskam/common/Documents/winter2022/ECE362/ECE362Assignment1/src'
 ./main zebra apple horse orange rat
 
 
@@ -58,40 +68,21 @@ ERROR: invalid arguments
 Usage: filter [-l] [-h] string string ...
 
 
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ ./main -l forward backward left right up down
+./main -l forward backward left right up down
 
 
 LOW: backward
 
 
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ ./main -hl forward backward left right up down
+./main -hl forward backward left right up down
+ERROR: invalid arguments
+Usage: filter [-l] [-h] string string ...
 
 
--hl
-backward
-down
-forward
-left
-right
-up
-
-
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ ./main -h forward backward left right up down
+./main -h forward backward left right up down
 
 
 HIGH: up
 
 
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ ./main -l
-
-
-ERROR: invalid arguments
-Usage: filter [-l] [-h] string string ...
-
-
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ ake help
--bash: ake: command not found
-hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$ make help
-To find the highest value add -h to the list of values
-To find the lowest value add -l to the list of values
-To sort the list don't add any modifiers to the list
+hoskam@auto:~/Documents/winter2022/ECE362/ECE362Assignment1/src$
