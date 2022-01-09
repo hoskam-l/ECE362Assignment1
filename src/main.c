@@ -25,7 +25,7 @@ void printError()
 	printf("ERROR: invalid arguments \n");
 					printf("Usage: filter [-l] [-h] string string ...\n");
 					printf("\n \n");
-					return(0);
+					
 }
 
 int main(int argc, char *argv[])
@@ -54,7 +54,8 @@ int main(int argc, char *argv[])
 				}
 				else
 				{
-					
+					printError();
+					return 0;
 				}
 			}
 			else
@@ -73,6 +74,7 @@ int main(int argc, char *argv[])
 	if ((showHigh || showLow) && elemUsedCnt < 1)
 	{
 		printError();
+		return 0;
 	}
 	// if no arguments
 	if (!showHigh && !showLow)
@@ -100,5 +102,5 @@ int main(int argc, char *argv[])
 	}
 
 	printf("\n \n");
-	return (0);
+	return 0;
 }
