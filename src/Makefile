@@ -32,4 +32,4 @@ all : clean clearscr main test
 clearscr: 
 	clear
 clean: 
-	rm -f *.o *.exe 
+	rm -f *.o *.exe main

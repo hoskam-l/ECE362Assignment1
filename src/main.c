@@ -7,7 +7,6 @@
 //  Defining comparator function as per the requirement
 static int myCompare(const void *a, const void *b)
 {
-
 	// setting up rules for comparison
 	return strcmp(*(const char **)a, *(const char **)b);
 }
@@ -62,7 +61,7 @@ int main(int argc, char *argv[])
 			// copy non modifiers to element array
 			else
 			{
-				elemUsed[elemUsedCnt] = malloc(sizeof(argv[i])); 
+				elemUsed[elemUsedCnt] = malloc(sizeof(argv[i]));
 				strcpy(elemUsed[elemUsedCnt], argv[i]);
 				elemUsedCnt++;
 			}
@@ -104,7 +103,6 @@ int main(int argc, char *argv[])
 	}
 
 	printf("\n \n");
-
 
 	return 0;
 }
